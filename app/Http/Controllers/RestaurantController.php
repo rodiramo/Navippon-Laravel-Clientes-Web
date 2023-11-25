@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
 use App\Models\Category;
+use App\Models\Budget;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -14,19 +15,19 @@ class RestaurantController extends Controller
     {
         $restaurants = Restaurant::with(['categories'])->get();
 
-        return view('restaurant.index', ['restaurants' => $restaurants]);
+        return view('restaurants.index', ['restaurants' => $restaurants]);
     }
 
     public function view(int $id)
     {
         $restaurant = Restaurant::findOrFail($id);
 
-        return view('restaurant.view', ['restaurant' => $restaurant]);
+        return view('restaurants.view', ['restaurant' => $restaurant]);
     }
 
     public function formNew()
     {
-        return view('restaurant.form-new', [
+        return view('restaurants.form-new', [
             'categories' => Category::orderBy('name')->get(),
         ]);
     }
@@ -48,17 +49,89 @@ class RestaurantController extends Controller
             });
 
             return redirect()
-                ->route('restaurant.index')
+                ->route('restaurants.index')
                 ->with('message.success', 'The restaurant <b>' . e($data['name']) . '</b> was successfully added!');
         } catch (\Exception $e) {
             return redirect()
-                ->route('restaurant.formNew')
+                ->route('restaurants.formNew')
                 ->withInput()
                 ->with('message.error', 'The restaurant <b>' . e($data['name']) . '</b> could not be saved. Please try again.')
                 ->with('message.type', 'danger');
         }
     }
 
+    public function formUpdate(int $id)
+    {
+        return view('restaurants.form-update', [
+            'restaurant' => Restaurant::findOrFail($id),
+            'categories' => Category::orderBy('name')->get(),
+        ]);
+    }
+
+    public function processUpdate(Request $request, int $id)
+    {
+        $restaurant = Restaurant::findOrFail($id);
+
+        $request->validate(Restaurant::validationRules(), Restaurant::validationMessages());
+
+        $data = $request->except(['_token']);
+
+        if ($request->hasFile('cover')) {
+            $data['cover'] = $this->uploadCover($request);
+        }
+
+        try {
+            DB::transaction(function () use ($restaurant, $data) {
+                $restaurant->update($data);
+                $restaurant->categories()->sync($data['category_id'] ?? []);
+            });
+        } catch (\Exception $e) {
+            return redirect()
+                ->route('restaurants.formUpdate', ['id' => $id])
+                ->withInput()
+                ->with('message.error', 'The Restaurant <b>' . e($data['name']) . '</b> could not be updated. Please try again later.')
+                ->with('message.type', 'danger');
+        }
+
+        return redirect()
+            ->route('restaurants.index')
+            ->with('message.success', 'The restaurant <b>' . e($restaurant->name) . '</b> was successfully edited.');
+    }
+
+    public function confirmDelete(int $id)
+    {
+        return view('restaurants.delete', [
+            'restaurant' => Restaurant::findOrFail($id),
+        ]);
+    }
+
+    public function processDelete(int $id)
+    {
+        $restaurant = Restaurant::findOrFail($id);
+
+        try {
+            DB::transaction(function () use ($restaurant) {
+                $restaurant->categories()->detach();
+                $restaurant->delete();
+            });
+        } catch (\Exception $e) {
+            return redirect()
+                ->route('restaurants.confirmDelete', ['id' => $id])
+                ->withInput()
+                ->with('message.error', 'The Restaurant <b>' . e($restaurant->name) . '</b> could not be deleted. Please try again later.')
+                ->with('message.type', 'danger');
+        }
+
+        return redirect()
+            ->route('restaurants.index')
+            ->with('message.success', 'The restaurant <b>' . e($restaurant->name) . '</b> was successfully deleted.');
+    }
+
+    public function showNewestRestaurants()
+    {
+        $restaurant = Restaurant::latest()->first();
+        return view('home', ['restaurant' => $restaurant]);
+    }
 
     /**
      * Upload restaurant image and return the file name.

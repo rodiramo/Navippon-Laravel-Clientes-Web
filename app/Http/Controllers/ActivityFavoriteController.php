@@ -37,13 +37,13 @@ class ActivityFavoriteController extends Controller
         }
     }
 
-    public function confirmDelete(int $FavoriteId)
+    public function confirmDelete(int $favoriteId)
     {
         $userId = auth()->id();
 
         try {
-            $Favorite = ActivityFavorite::where('user_id', $userId)
-                ->where('id', $FavoriteId)
+            $favorite = ActivityFavorite::where('user_id', $userId)
+                ->where('id', $favoriteId)
                 ->with('activity')
                 ->firstOrFail();
 

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('budget', function (Blueprint $table) {
-            $table->tinyIncrements('budget_id');
+            $table->tinyIncrements('budget_id')->nullable();
             $table->string('name', 50);
             $table->string('value', 5);
             $table->timestamps();

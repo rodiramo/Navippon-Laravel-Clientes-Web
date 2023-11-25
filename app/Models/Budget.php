@@ -27,4 +27,14 @@ class Budget extends Model
 {
     //    use HasFactory;
     protected $primaryKey = 'budget_id';
+
+    public function restaurants()
+    {
+        return $this->hasMany(Restaurant::class, 'budget_id', 'budget_id');
+    }
+
+    public function activities()
+    {
+        return $this->hasMany(Activity::class, 'budget_id', 'budget_id');
+    }
 }

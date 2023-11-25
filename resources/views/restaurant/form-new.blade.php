@@ -41,13 +41,13 @@
             @enderror
         </div>
         <div class="mb-3 d-flex align-items-start flex-column">
-            <label for="cover_description" class="form-label">Image Description<span
+            <label for="image_description" class="form-label">Image Description<span
                     class="small">(optional)</span></label>
-            <input type="text" id="cover_description" name="cover_description" class="form-control"
-                value="{{ old('cover_description') }}"
-                @error('cover_description') aria-describedby="error-cover_description" @enderror>
-            @error('cover_description')
-                <div class="text-danger py-2" id="error-cover_description">{{ $message }}</div>
+            <input type="text" id="image_description" name="image_description" class="form-control"
+                value="{{ old('image_description') }}"
+                @error('image_description') aria-describedby="error-image_description" @enderror>
+            @error('image_description')
+                <div class="text-danger py-2" id="error-image_description">{{ $message }}</div>
             @enderror
         </div>
         <fieldset class="mb-3 d-flex align-items-start flex-column">

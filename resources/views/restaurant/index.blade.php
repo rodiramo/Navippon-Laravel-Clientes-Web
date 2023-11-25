@@ -18,7 +18,7 @@
 
     @foreach ($restaurants as $restaurant)
         <div class="blog-card">
-            <div class="cover">
+            <div class="image">
                 <x-restaurant-image :restaurant="$restaurant" />
             </div>
             <div class="description">

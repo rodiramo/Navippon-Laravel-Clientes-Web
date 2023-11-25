@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('restaurant_id');
             $table->string('title', 120);
             $table->text('description');
-            $table->string('cover', 255)->nullable();
+            $table->string('image', 255)->nullable();
             $table->string('image_description', 255)->nullable();
             $table->string('location', 255);
             $table->timestamps();
