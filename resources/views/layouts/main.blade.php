@@ -97,7 +97,7 @@
             @yield('main')
         </main>
         <footer class="footer">
-            <p>Rocio Diaz Ramos &copy; 2023</p>
+            <p>Rocio Diaz Ramos y Elian Guananjay &copy; 2023</p>
         </footer>
     </div>
     <script src="{{ url('js/bootstrap.bundle.js') }}"></script>
