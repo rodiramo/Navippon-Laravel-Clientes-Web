@@ -15,19 +15,19 @@ class RestaurantController extends Controller
     {
         $restaurants = Restaurant::with(['categories'])->get();
 
-        return view('restaurants.index', ['restaurants' => $restaurants]);
+        return view('restaurant.index', ['restaurants' => $restaurants]);
     }
 
     public function view(int $id)
     {
         $restaurant = Restaurant::findOrFail($id);
 
-        return view('restaurants.view', ['restaurant' => $restaurant]);
+        return view('restaurant.view', ['restaurant' => $restaurant]);
     }
 
     public function formNew()
     {
-        return view('restaurants.form-new', [
+        return view('restaurant.form-new', [
             'categories' => Category::orderBy('name')->get(),
         ]);
     }
@@ -62,7 +62,7 @@ class RestaurantController extends Controller
 
     public function formUpdate(int $id)
     {
-        return view('restaurants.form-update', [
+        return view('restaurant.form-update', [
             'restaurant' => Restaurant::findOrFail($id),
             'categories' => Category::orderBy('name')->get(),
         ]);
@@ -100,7 +100,7 @@ class RestaurantController extends Controller
 
     public function confirmDelete(int $id)
     {
-        return view('restaurants.delete', [
+        return view('restaurant.delete', [
             'restaurant' => Restaurant::findOrFail($id),
         ]);
     }

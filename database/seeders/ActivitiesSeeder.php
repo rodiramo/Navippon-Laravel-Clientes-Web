@@ -14,7 +14,7 @@ class ActivitiesSeeder extends Seeder
         DB::table('activities')->insert([
             [
                 'activity_id' => 1,
-                'title' => 'Senso-ji Temple',
+                'name' => 'Senso-ji Temple',
                 'budget_id' => 1,
                 'city_id' => 1,
                 'direction' => '35.7141° N, 139.7967° E',
@@ -26,7 +26,7 @@ class ActivitiesSeeder extends Seeder
             ],
             [
                 'activity_id' => 2,
-                'title' => 'Ueno Park',
+                'name' => 'Ueno Park',
                 'budget_id' => 2,
                 'city_id' => 2,
                 'direction' => '35.7138° N, 139.7748° E',
@@ -38,7 +38,7 @@ class ActivitiesSeeder extends Seeder
             ],
             [
                 'activity_id' => 3,
-                'title' => 'Fushimi Inari Taisha',
+                'name' => 'Fushimi Inari Taisha',
                 'budget_id' => 2,
                 'city_id' => 3,
                 'direction' => '34.9671° N, 135.7727° E', // Kyoto
@@ -50,7 +50,7 @@ class ActivitiesSeeder extends Seeder
             ],
             [
                 'activity_id' => 4,
-                'title' => 'Arashiyama Bamboo Grove',
+                'name' => 'Arashiyama Bamboo Grove',
                 'budget_id' => 1,
                 'city_id' => 3,
                 'direction' => '35.0159° N, 135.6668° E', // Kyoto
@@ -62,7 +62,7 @@ class ActivitiesSeeder extends Seeder
             ],
             [
                 'activity_id' => 5,
-                'title' => 'Akihabara',
+                'name' => 'Akihabara',
                 'budget_id' => 2,
                 'city_id' => 3,
                 'direction' => '35.6995° N, 139.7710° E', // Tokyo
@@ -74,7 +74,7 @@ class ActivitiesSeeder extends Seeder
             ],
             [
                 'activity_id' => 6,
-                'title' => 'Nara Park',
+                'name' => 'Nara Park',
                 'budget_id' => 1,
                 'city_id' => 3,
                 'direction' => '34.6851° N, 135.8399° E', // Nara

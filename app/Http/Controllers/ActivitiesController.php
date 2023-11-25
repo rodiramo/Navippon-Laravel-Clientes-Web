@@ -24,10 +24,8 @@ class ActivitiesController extends Controller
     public function view(int $id)
     {
         $activity = Activity::findOrFail($id);
-        $budget = Budget::all();
         return view('activities.view', [
             'activity' => $activity,
-            'budget' => $budget,
         ]);
     }
 

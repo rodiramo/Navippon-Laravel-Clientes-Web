@@ -16,7 +16,7 @@ class RestaurantSeeder extends Seeder
         DB::table('restaurants')->insert([
             [
                 'restaurant_id' => 1,
-                'title' => 'Sushi Paradise',
+                'name' => 'Sushi Paradise',
                 'description' => 'Experience the finest sushi in town at Sushi Paradise. Our chefs use only the freshest ingredients to create authentic Japanese flavors.',
                 'image' => 'restaurant-sushi.jpg',
                 'budget_id' => 1,
@@ -27,7 +27,7 @@ class RestaurantSeeder extends Seeder
             ],
             [
                 'restaurant_id' => 2,
-                'title' => 'Bistro Fusion',
+                'name' => 'Bistro Fusion',
                 'description' => 'Bistro Fusion offers a delightful fusion of flavors from around the world. Enjoy a unique culinary experience in a cozy atmosphere.',
                 'image' => 'restaurant-bistro.jpg',
                 'budget_id' => 1,
@@ -38,7 +38,7 @@ class RestaurantSeeder extends Seeder
             ],
             [
                 'restaurant_id' => 3,
-                'title' => 'Spice Garden',
+                'name' => 'Spice Garden',
                 'description' => 'Indulge in the rich and diverse flavors of Spice Garden. Our chefs masterfully blend spices to create mouthwatering dishes that will tantalize your taste buds.',
                 'image' => 'restaurant-spice.jpg',
                 'budget_id' => 1,

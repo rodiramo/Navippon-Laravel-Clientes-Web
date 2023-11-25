@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->id('activity_id');
-            $table->string('title', 120);
-            $table->string('direction');
+            $table->string('name', 120);
+            $table->string('direction')->nullable();
             $table->text('description');
             $table->string('image', 255)->nullable();
             $table->string('image_description', 255)->nullable();

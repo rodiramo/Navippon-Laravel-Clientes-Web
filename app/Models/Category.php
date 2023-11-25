@@ -13,11 +13,11 @@ class Category extends Model
 
     public function restaurants()
     {
-        return $this->hasMany(Restaurant::class, 'category_id', 'category_id');
+        return $this->belongsToMany(Restaurant::class, 'restaurant_has_categories', 'category_id', 'restaurant_id');
     }
 
     public function activities()
     {
-        return $this->hasMany(Activity::class, 'category_id', 'category_id');
+        return $this->belongsToMany(Activity::class, 'activities_has_categories', 'category_id', 'activity_id');
     }
 }

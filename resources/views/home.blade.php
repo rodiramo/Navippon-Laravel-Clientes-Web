@@ -2,6 +2,7 @@
 //
 /** @var \App\Models\News[]|\Illuminate\Database\Eloquent\Collection $news */
 /** @var \App\Models\Game[]|\Illuminate\Database\Eloquent\Collection $games */
+/** @var \App\Models\Categories[]|\Illuminate\Database\Eloquent\Collection $categories */
 /** @var \App\Models\City[]|\Illuminate\Database\Eloquent\Collection $cities */
 /** @var \App\Models\City $featuredCity */
 ?>
@@ -22,18 +23,17 @@
         </div>
     </header>
 
-    <section class="home-news">
-        <h2>Most Popular Restaurant</h2>
-        <div class="line"></div>
-        <h3>"{{ $restaurant->title }}"</h3>
-        <p>{{ $restaurant->date }}</p>
-        <p>{{ $restaurant->description }}</p>
+    <section class="home-categories">
+        <h2>Explore by Categories</h2>
+        <ul>
+            @foreach ($categories as $category)
+                <li><a
+                        href="{{ route('category.show', ['categoryId' => $category->category_id]) }}">{{ $category->name }}</a>
+                </li>
+            @endforeach
+        </ul>
     </section>
 
-    <section class="home-game">
-        <h2>Most Popular Activity "{{ $activity->title }}"</h2>
-        <img src="{{ Storage::url('imgs/' . $activity->image) }}" alt="{{ $activity->image_description }}">
-    </section>
 
     <section class="cities">
         <h2>Explore Cities</h2>

@@ -25,6 +25,10 @@ Route::get('cities/{cityId}', [\App\Http\Controllers\CityController::class, 'sho
     ->name('city.show')
     ->whereNumber('cityId');
 
+Route::get('categories/{categoryId}', [\App\Http\Controllers\CategoryController::class, 'showCategory'])
+    ->name('category.show')
+    ->whereNumber('categoryId');
+
 /*AUTH */
 
 Route::get('login', [\App\Http\Controllers\AuthController::class, 'formLogin'])
