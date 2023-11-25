@@ -20,10 +20,8 @@
                     <td>{{ $user->role_id }}</td>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
-                    <td><a href="{{ route('admin.viewUserFavouritesActivities', ['userId' => $user->user_id]) }}"
+                    <td><a href="{{ route('admin.viewUserFavoritesActivities', ['userId' => $user->user_id]) }}"
                             class="btn btn-primary">View Favourites</a></td>
-
-                    <td><a href="#" class="btn btn-danger">Delete</a></td>
                 </tr>
             @endforeach
         </tbody>

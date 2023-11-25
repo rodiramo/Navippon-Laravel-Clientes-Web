@@ -123,15 +123,6 @@ class CitySeeder extends Seeder
             ],
             [
                 'city_id' => 13,
-                'name' => 'Saitama',
-                'prefecture' => 'Saitama',
-                'picture' => 'saitama.jpg',
-                'picture_description' => 'Skyline of Tokyo',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'city_id' => 14,
                 'name' => 'Kumamoto',
                 'prefecture' => 'Kumamoto',
                 'picture' => 'kumamoto.jpg',
@@ -140,7 +131,7 @@ class CitySeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'city_id' => 15,
+                'city_id' => 14,
                 'name' => 'Nara',
                 'prefecture' => 'Nara',
                 'picture' => 'nara.jpg',

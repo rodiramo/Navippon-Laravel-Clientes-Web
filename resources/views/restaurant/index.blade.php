@@ -3,7 +3,7 @@
 @section('title', 'Latest Restaurants')
 
 @section('main')
-    <header>
+    <header class="header-restaurant">
         <h1>All Our Restaurants</h1>
         @auth
             @if (auth()->user()->role_id == 1)
@@ -15,38 +15,43 @@
             @endif
         @endauth
     </header>
+    <div class="container">
+        <div class="grid">
+            @foreach ($restaurants as $restaurant)
+                <article>
+                    <div class="image">
+                        <x-restaurant-image :restaurant="$restaurant" />
+                    </div>
+                    @foreach ($restaurant->categories as $category)
+                        <img class="icon" src="{{ Storage::url('imgs/' . $category->icon) }}"
+                            alt="{{ $category->name }}'s Icon ">
+                    @endforeach
 
-    @foreach ($restaurants as $restaurant)
-        <div class="blog-card">
-            <div class="image">
-                <x-restaurant-image :restaurant="$restaurant" />
-            </div>
-            <div class="description">
-                <h2>{{ $restaurant->title }}</h2>
-                <span>{{ $restaurant->created_at }}</span>
-                <div class="line"></div>
-
-                @foreach ($restaurant->categories as $category)
-                    <span class="badge">{{ $category->name }}</span>
-                @endforeach
-
-                <p>{{ $restaurant->description }}</p>
-                <div class="read-more">
-                    <a href="{{ route('restaurants.view', ['id' => $restaurant->restaurant_id]) }}" class="button-35">Read
-                        More</a>
-                </div>
-
-                @auth
-                    @if (auth()->user()->role_id == 1)
-                        <div class="actions">
-                            <a href="{{ route('restaurants.formUpdate', ['id' => $restaurant->restaurant_id]) }}"
-                                class="btn btn-secondary">Edit</a>
-                            <a href="{{ route('restaurants.confirmDelete', ['id' => $restaurant->restaurant_id]) }}"
-                                class="btn btn-danger">Delete</a>
+                    <div class="text">
+                        <h2>{{ $restaurant->name }}</h2>
+                        @foreach ($restaurant->categories as $category)
+                            <span class="badge">{{ $category->name }}</span>
+                        @endforeach
+                        <p>{{ $restaurant->budget->value }}</p>
+                        <p>{{ $restaurant->description }}</p>
+                        <div class="read-more">
+                            <a href="{{ route('restaurants.view', ['id' => $restaurant->restaurant_id]) }}" class="button">
+                                Read More
+                            </a>
                         </div>
-                    @endif
-                @endauth
-            </div>
+                        @auth
+                            @if (auth()->user()->role_id == 1)
+                                <div class="actions">
+                                    <a href="{{ route('restaurants.formUpdate', ['id' => $restaurant->restaurant_id]) }}"
+                                        class="btn btn-secondary">Edit</a>
+                                    <a href="{{ route('restaurants.confirmDelete', ['id' => $restaurant->restaurant_id]) }}"
+                                        class="btn btn-danger">Delete</a>
+                                </div>
+                            @endif
+                        @endauth
+                    </div>
+                </article>
+            @endforeach
         </div>
-    @endforeach
+    </div>
 @endsection

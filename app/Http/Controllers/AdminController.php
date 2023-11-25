@@ -22,8 +22,8 @@ class AdminController extends Controller
     public function viewUserFavoritesActivities($userId)
     {
         $user = User::findOrFail($userId);
-        $favoriteActivities = ActivityFavorite::where('user_id', $user->user_id)->get();
+        $favorites = ActivityFavorite::where('user_id', $user->user_id)->get();
 
-        return view('admin.favoriteActivitiesList', ['user' => $user, 'favoriteActivities' => $favoriteActivities]);
+        return view('admin.favoriteActivitiesList', ['user' => $user, 'favorites' => $favorites]);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Restaurant extends Model
 {
@@ -37,6 +38,11 @@ class Restaurant extends Model
     public function city()
     {
         return $this->belongsTo(City::class, 'city_id', 'city_id');
+    }
+
+    public function budget(): BelongsTo
+    {
+        return $this->belongsTo(Budget::class, 'budget_id', 'budget_id');
     }
 
     public function categories(): BelongsToMany

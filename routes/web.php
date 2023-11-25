@@ -81,21 +81,10 @@ Route::delete('favorites/{favoriteId}', [\App\Http\Controllers\ActivityFavoriteC
 /*RESERVE  */
 
 Route::post('activities/{id}/favorite', [\App\Http\Controllers\ActivityFavoriteController::class, 'processFavorite'])
-    ->name('activities.processFavorite')
+    ->name('activities.activitiesFavorite')
     ->middleware(['auth'])
     ->whereNumber('id');
 
-/* RATING */
-Route::get('activities/{id}/confirm-age', [\App\Http\Controllers\AgeConfirmationController::class, 'formConfirmation'])
-    ->name('age-confirmation.formConfirmation')
-    ->middleware(['auth'])
-    ->whereNumber('id');
-
-/* CONFIRM AGE */
-Route::post('activities/{id}/confirm-age', [\App\Http\Controllers\AgeConfirmationController::class, 'processConfirmation'])
-    ->name('age-confirmation.processConfirmation')
-    ->middleware(['auth'])
-    ->whereNumber('id');
 
 
 /* RESTAURANTS */
@@ -171,6 +160,6 @@ Route::get('user-list', [\App\Http\Controllers\AdminController::class, 'userList
     ->name('userList')
     ->middleware(['auth', 'checkRole']);
 
-Route::get('user-list/{userId}/favourites', [\App\Http\Controllers\AdminController::class, 'viewUserFavouritesActivities'])
-    ->name('admin.viewUserFavouritesActivities')
+Route::get('user-list/{userId}/favorites', [\App\Http\Controllers\AdminController::class, 'viewUserFavoritesActivities'])
+    ->name('admin.viewUserFavoritesActivities')
     ->middleware(['auth', 'checkRole']);

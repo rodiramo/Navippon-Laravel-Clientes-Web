@@ -3,46 +3,62 @@
 @section('title', 'List of Activities')
 
 @section('main')
-    <header>
+    <header class="header-activity">
         <h1>Activities</h1>
         @auth
             @if (auth()->user()->role_id == 1)
-                <div class="container-center"><a href="{{ route('activities.formNew') }}">Upload a New Activity</a></div>
+                <div class="container-center"><a class="button" href="{{ route('activities.formNew') }}">Upload a New
+                        Activity</a>
+                </div>
             @else
                 <p>Check Out all Our Activities we have to Offer!</p>
             @endif
         @endauth
     </header>
+    <div class="container">
+        <div class="grid">
+            @foreach ($activities as $activity)
+                <article>
+                    <div class="image">
+                        <x-activity-image :activity="$activity" />
+                    </div>
+                    @foreach ($activity->categories as $category)
+                        <img class="icon" src="{{ Storage::url('imgs/' . $category->icon) }}"
+                            alt="{{ $category->name }}'s Icon ">
+                    @endforeach
 
-    <article class="cards">
-        @foreach ($activities as $activity)
-            <div class="card">
-                <div class="card_img card1"><x-activity-image :activity="$activity" /></div>
-                <h3>{{ $activity->title }}</h3>
-                <p>{{ $activity->date }}</p>
-                <p>{{ $activity->description }}</p>
-                <div class="line"></div>
-                @foreach ($activity->categories as $category)
-                    <span class="badge">{{ $category->name }}</span>
-                @endforeach
-                <a href="{{ route('activities.view', ['id' => $activity->activity_id]) }}" class="button-35">View More</a>
-
-                @auth
-                    <form action="{{ route('activities.processFavorite', ['id' => $activity->activity_id]) }}" method="post">
-                        @csrf
-                        <button type="submit" class="btn btn-primary mb-2">Reserve</button>
-                    </form>
-                    @if (auth()->user()->role_id == 1)
-                        <div class="d-flex justify-content-between gap-1">
-                            <a href="{{ route('activities.formUpdate', ['id' => $activity->activity_id]) }}"
-                                class="btn btn-secondary">Edit</a>
-                            <a href="{{ route('activities.confirmDelete', ['id' => $activity->activity_id]) }}"
-                                class="btn btn-danger">Delete</a>
+                    <div class="text">
+                        <h2>{{ $activity->name }}</h2>
+                        @foreach ($activity->categories as $category)
+                            <span class="badge">{{ $category->name }}</span>
+                        @endforeach
+                        <p>{{ $activity->budget->value }}</p>
+                        <p>{{ $activity->description }}</p>
+                        <div class="read-more">
+                            <a href="{{ route('activities.view', ['id' => $activity->activity_id]) }}" class="button">
+                                Read More
+                            </a>
                         </div>
-                    @endif
-                @else
-                @endauth
-            </div>
-        @endforeach
-    </article>
+                        @auth
+                            <form action="{{ route('activities.activitiesFavorite', ['id' => $activity->activity_id]) }}"
+                                method="post">
+                                @csrf
+                                <button type="submit" class="button-reserve"><i
+                                        class='bx bx-bookmark-heart'></i>Favorite</button>
+                            </form>
+                            @if (auth()->user()->role_id == 1)
+                                <div class="actions">
+                                    <a href="{{ route('activities.formUpdate', ['id' => $activity->activity_id]) }}"
+                                        class="btn btn-secondary">Edit</a>
+                                    <a href="{{ route('activities.confirmDelete', ['id' => $activity->activity_id]) }}"
+                                        class="btn btn-danger">Delete</a>
+                                </div>
+                            @endif
+                        @endauth
+                    </div>
+                </article>
+            @endforeach
+        </div>
+    </div>
+
 @endsection

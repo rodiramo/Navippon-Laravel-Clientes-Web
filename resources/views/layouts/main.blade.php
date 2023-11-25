@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,39 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title') - Navippon</title>
-    <!--icon-->
+    <!-- Icon -->
     <link rel="icon" href="{{ URL::to('favicon.ico') }}">
-    <!--fonts-->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css?family=Vibur:400" rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ URL::to('font/stylesheet.css') }}" type="text/css">
-    <!--css-->
+    <!-- CSS -->
     <link rel="stylesheet" href="{{ url('css/app.css') }}">
-    <!--boxicons-->
+    <!-- Boxicons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <!--bootstrap-->
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="{{ url('css/bootstrap.min.css') }}">
 </head>
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a href="/" class="navbar-brand">Navippon</a>
+                <a href="/" class="navbar-brand"><img src="{{ url('img/logo-white.png') }}"
+                        alt="Navippon Logo">Navippon</a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
+                    data-bs-target="#navbarCollapse"><i class="bx bx-menu "></i>
+
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav">
-
                         <a class="nav-link" href="{{ url('/') }}">Home</a>
-
                         <a class="nav-link" href="{{ url('/about-us') }}">About Us</a>
-
                         <a class="nav-link" href="{{ url('/restaurants') }}">Restaurants</a>
-
                         <a class="nav-link" href="{{ url('/activities') }}">Activities</a>
                         @auth
                             <div class="nav-item dropdown">
@@ -51,20 +48,17 @@
                                         <a class="nav-link" href="{{ route('profile') }}">My Profile</a>
                                     @endif
                                     <hr class="dropdown-divider">
-
                                     <form action="{{ route('auth.logout') }}" method="post">
                                         @csrf
-                                        <button type="submit" class="btn nav-link">{{ auth()->user()->email }}
-                                            (Log Out)
-                                        </button>
+                                        <button type="submit" class="btn nav-link">{{ auth()->user()->email }} (Log
+                                            Out)</button>
                                     </form>
-                                @else
-                                    <a class="nav-link" href="{{ route('login') }}">Log In</a>
-
-                                    <a class="nav-link" href="{{ route('signup') }}">Sign Up</a>
-                                @endauth
+                                </div>
                             </div>
-                        </div>
+                        @else
+                            <a class="nav-link" href="{{ route('login') }}">Log In</a>
+                            <a class="nav-link" href="{{ route('signup') }}">Sign Up</a>
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -77,7 +71,6 @@
                         <div class="subject">
                             {!! Session::get('message.error') !!}
                         </div>
-
                     </div>
                 </div>
             @endif
@@ -88,16 +81,13 @@
                         <div class="subject">
                             {!! Session::get('message.success') !!}
                         </div>
-
                     </div>
                 </div>
             @endif
-
-
             @yield('main')
         </main>
         <footer class="footer">
-            <p>Rocio Diaz Ramos &copy; 2023</p>
+            <p>Navippon &copy; 2023</p>
         </footer>
     </div>
     <script src="{{ url('js/bootstrap.bundle.js') }}"></script>

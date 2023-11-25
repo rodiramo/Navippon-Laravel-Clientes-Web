@@ -9,7 +9,7 @@
 
 @section('main')
     <header class="smaller-header">
-        <h1>Upload a New Activity</h1>
+        <h1>Upload a New Restaurant</h1>
         <p>Please fill all data required(*)</p>
     </header>
     <form class="form-data" action="{{ route('activities.processNew') }}" method="post" enctype="multipart/form-data">

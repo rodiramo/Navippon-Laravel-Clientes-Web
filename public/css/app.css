@@ -3,7 +3,7 @@
 /* Colors */
 :root {
   --PrimaryColor: #ff4a5a;
-  --HoverColor: #cdd9e1;
+  --HoverColor: #9ab2c2;
   --whiteColor: #ffffff;
   --blackColor: #0a0330;
   --textColor: #96c6d9;
@@ -52,38 +52,67 @@ header,
   display: flex;
   padding: 1rem;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
 }
-
-header {
-  background: linear-gradient(
-    176deg,
-    var(--primary-bg) 0%,
-    rgba(9, 9, 121, 0) 83%,
-    rgba(0, 212, 255, 0) 100%
-  );
-  height: 60vh;
+.profile-header {
+  color: var(--blackColor);
   flex-direction: column;
 }
-
+.profile-header h1 {
+  color: var(--blackColor);
+}
+.padding {
+  padding: 2rem;
+}
 .header-home {
-  height: 70vh;
+  background: linear-gradient(rgba(16, 13, 71, 0.552), rgba(38, 15, 97, 0.552)),
+    url(../img/bgImg.jpg);
+  height: 100vh;
+  flex-direction: column;
   background-size: cover;
 }
+.header-restaurant {
+  height: 70vh;
+  flex-direction: column;
+  background: linear-gradient(rgba(16, 13, 71, 0.552), rgba(38, 15, 97, 0.552)),
+    url(../img/bgRestaurant.jpeg);
+  background-repeat: no-repeat;
+  color: var(--greyBg);
+  background-size: cover;
+}
+.header-activity {
+  color: var(--greyBg);
+}
 
-.smaller-header {
-  height: 40vh;
+.header-cities {
+  height: 70vh;
+  flex-direction: column;
+}
+.header-cities h1 {
+  color: var(--blackColor) !important;
+}
+.header-activity {
+  height: 70vh;
+  flex-direction: column;
+  background: linear-gradient(rgba(16, 13, 71, 0.552), rgba(38, 15, 97, 0.552)),
+    url(../img/bgActivity.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.smaller-header h1 {
+  color: var(--PrimaryColor);
 }
 
 header > h1 {
-  color: var(--primary-text) !important;
+  margin-bottom: 4rem;
+  color: var(--whiteColor);
   font-size: 4rem;
 }
 
 header > p {
+  margin-bottom: 4rem;
   color: var(--primary-text);
-  font-style: italic;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 /* Main */
@@ -182,7 +211,8 @@ p {
   background-color: #ff4a5a;
   border-radius: 30px;
   padding: 1rem 2rem;
-  margin-top: 1rem;
+  border: none;
+  margin-top: 2rem;
   margin-bottom: 1rem;
   font-size: 1rem;
   cursor: pointer;
@@ -195,8 +225,10 @@ p {
 
 .button-reserve {
   color: #fbfbfb;
-  background-color: #ff4a5a;
-  border-radius: 0.5rem;
+  background-color: #4cc1ef;
+  border-radius: 30px;
+  border: none;
+  margin-top: 2rem;
   padding: 1rem 2rem;
 }
 
@@ -273,8 +305,10 @@ p {
 
 /* Badge */
 .badge {
-  background-color: var(--primary-bg);
-  color: var(--primary-text) !important;
+  background-color: var(--HoverColor);
+  border-radius: 30px !important;
+  padding: 0.5rem !important;
+  color: var(--whiteColor) !important;
 }
 
 /* Form Edit and New */
@@ -291,40 +325,149 @@ p {
 
 /* Form Login */
 .form-login {
-  width: 80%;
   display: block;
+  height: fit-content;
   margin: 10px auto;
   background-color: var(--tertiary-bg);
   border-radius: 10px;
   backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  border: 2px solid var(--PrimaryColor);
   padding: 50px 35px;
 }
 
 /* Navbar */
-.navbar .nav-link {
-  background-color: var(--primary-bg) !important;
+nav {
+  background-color: var(--blackColor) !important;
   color: var(--primary-text) !important;
-  padding: 2rem;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+  width: 100%;
 }
-
+.bx-menu {
+  color: var(--PrimaryColor);
+  font-size: 2rem !important;
+}
 .container-fluid {
   z-index: 1;
 }
-
-.navbar-expand-lg {
+.navbar-nav {
+  background-color: var(--blackColor) !important;
+  border-radius: 0rem 0rem 30rem 30rem !important;
+  align-items: center;
+  border-radius: 20px;
+}
+.navbar-expand-lg,
+.navbar-collapse {
   height: 6rem;
+  justify-content: flex-end !important;
 }
 
-.nav-item {
+.nav-link {
   padding-right: 2rem;
+  color: var(--PrimaryColor) !important;
+}
+.nav-link:hover {
+  color: var(--HoverColor) !important;
+}
+.navbar-brand {
+  color: var(--whiteColor) !important;
+  font-family: "Sifonn", sans-serif;
+  font-size: 2rem !important;
+  display: flex;
+  align-items: center;
+}
+.navbar-brand img {
+  width: 50px;
+  margin-right: 1rem;
+}
+.icon-category {
+  width: 50px;
+}
+.home-cities {
+  text-align: center;
+}
+.home-categories {
+  margin-top: 5rem;
+}
+.cities {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.city-home {
+  display: flex;
+  color: var(--HoverColor);
+  margin: 1rem;
+  flex-direction: column;
+  align-items: center;
+}
+.city-image {
+  width: 160px;
+  border-radius: 2rem;
+}
+.categories {
+  padding: 5rem;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+.category-home {
+  display: flex;
+  color: var(--HoverColor);
+  margin: 1rem;
+  flex-direction: column;
+  align-items: center;
+}
+body {
+  padding-top: 20px;
 }
 
-nav {
-  background-color: var(--primary-bg) !important;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 20px;
+  margin-top: 5rem;
+  align-items: stretch;
 }
 
+.grid > article {
+  border: 1px solid var(--PrimaryColor);
+  border-radius: 5rem;
+  box-shadow: 2px 2px 6px 0px rgba(73, 80, 206, 0.3);
+  text-align: center;
+}
+
+.grid > article img {
+  max-width: 100%;
+}
+
+.grid > article .icon {
+  line-height: 70px;
+  height: 100px;
+  width: 100px;
+  border: 6px solid white;
+  border-radius: 50%;
+  background-color: var(--whiteColor);
+  text-align: center;
+  color: white;
+  margin-top: -36px;
+}
+article .icon {
+  width: 50px;
+}
+.grid .text {
+  padding: 16px 20px 30px;
+}
+
+.grid .btn {
+  margin-top: 20px;
+}
+.card-title {
+  margin-top: 2rem;
+  margin-bottom: 2rem !important;
+}
 /* Card */
 .card p {
   color: var(--secondary-text);
@@ -385,11 +528,6 @@ nav {
   background-color: #ff4a5a;
   box-shadow: 0 0 10px 1px rgba(252, 252, 252, 0.797);
   text-decoration: none;
-}
-
-.container-center a:hover {
-  background-color: rgba(255, 255, 255, 0.976);
-  color: black;
 }
 
 .card:hover {
@@ -453,8 +591,10 @@ nav {
   color: var(--secondary-text);
   margin-top: 5px;
 }
-
-.blog-card .description .read-more {
+.read-more {
+  margin-top: 2rem !important;
+}
+.blog-card .description {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
@@ -468,6 +608,32 @@ nav {
   margin-top: 1.25rem;
 }
 
+.img-auth {
+  z-index: -1;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(27, 34, 96, 0.5)),
+    url(/img/Japan-Matsuri.jpg);
+  height: 100vh;
+  width: 50%;
+  background-size: cover;
+  border-radius: 0rem 30rem 29rem 0rem;
+  position: relative;
+}
+
+.logo {
+  padding: 1rem;
+  width: 8rem;
+  margin: 5rem;
+}
+.form-login {
+  margin-left: 9rem;
+}
+input {
+  border: 1px solid #ff4a5a;
+  border-radius: 30px;
+  background-color: #cdd9e188;
+  padding: 1rem;
+  width: 100%;
+}
 /* Media Queries */
 @media screen and (max-width: 1200px) {
   .card {
@@ -493,7 +659,12 @@ nav {
   .blog-card {
     width: 80%;
   }
-
+  .img-auth {
+    display: none;
+  }
+  .form-login {
+    margin: 5rem;
+  }
   .cover {
     display: none;
   }

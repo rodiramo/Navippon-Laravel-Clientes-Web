@@ -7,7 +7,7 @@
         <h1>User Favorites - {{ $user->name }}</h1>
     </header>
 
-    @if (count($favorites) > 0)
+    @if ($favorites && count($favorites) > 0)
         <table>
             <thead>
                 <tr>

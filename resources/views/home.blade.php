@@ -25,21 +25,29 @@
 
     <section class="home-categories">
         <h2>Explore by Categories</h2>
-        <ul>
+        <ul class="categories">
             @foreach ($categories as $category)
-                <li><a
-                        href="{{ route('category.show', ['categoryId' => $category->category_id]) }}">{{ $category->name }}</a>
+                <li>
+                    <a href="{{ route('category.show', ['categoryId' => $category->category_id]) }}" class="category-home">
+                        <img class="icon-category" src="{{ Storage::url('imgs/' . $category->icon) }}"
+                            alt="{{ $category->name }}'s Icon">{{ $category->name }}
+                    </a>
                 </li>
             @endforeach
         </ul>
     </section>
 
 
-    <section class="cities">
-        <h2>Explore Cities</h2>
-        <ul>
+    <section class="home-cities">
+        <h2>Explore by Cities</h2>
+        <ul class="cities">
             @foreach ($cities as $city)
-                <li><a href="{{ route('city.show', ['cityId' => $city->city_id]) }}">{{ $city->name }}</a></li>
+                <li class="cities">
+                    <a class="city-home" href="{{ route('city.show', ['cityId' => $city->city_id]) }}">
+                        <img class="city-image" src="{{ Storage::url('imgs/' . $city->picture) }}"
+                            alt="{{ $city->picture }}'s Landscape">{{ $city->name }}
+                    </a>
+                </li>
             @endforeach
         </ul>
     </section>

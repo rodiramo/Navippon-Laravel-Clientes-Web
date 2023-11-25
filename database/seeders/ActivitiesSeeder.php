@@ -64,7 +64,7 @@ class ActivitiesSeeder extends Seeder
                 'activity_id' => 5,
                 'name' => 'Akihabara',
                 'budget_id' => 2,
-                'city_id' => 3,
+                'city_id' => 1,
                 'direction' => '35.6995° N, 139.7710° E', // Tokyo
                 'image' => 'akihabara.jpg',
                 'image_description' => 'Akihabara in Tokyo',
@@ -76,7 +76,7 @@ class ActivitiesSeeder extends Seeder
                 'activity_id' => 6,
                 'name' => 'Nara Park',
                 'budget_id' => 1,
-                'city_id' => 3,
+                'city_id' => 14,
                 'direction' => '34.6851° N, 135.8399° E', // Nara
                 'image' => 'nara-park.jpg',
                 'image_description' => 'Nara Park in Nara',
