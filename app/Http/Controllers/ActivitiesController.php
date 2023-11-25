@@ -14,7 +14,7 @@ class ActivitiesController extends Controller
 {
     public function index()
     {
-        $activities = Activity::all();
+        $activities = Activity::with(['categories'])->get();
 
         return view('activities.index', [
             'activities' => $activities,
@@ -57,13 +57,16 @@ class ActivitiesController extends Controller
 
             return redirect()
                 ->route('activities.index')
-                ->with('message.success', 'The activity <b>' . e($data['title']) . '</b> was successfully added!');
+                ->with('message.success', 'The activity <b>' . e($data['name']) . '</b> was successfully added!');
         } catch (\Exception $e) {
+
             \Log::error('Error adding activity: ' . $e->getMessage());
+            \Log::error('Validation errors: ', $request->validate(Activity::validationRules(), Activity::validationMessages()));
+
             return redirect()
                 ->route('activities.formNew')
                 ->withInput()
-                ->with('message.error', 'The activity <b>' . e($data['title']) . '</b> could not be saved. Please try again.')
+                ->with('message.error', 'The activity <b>' . e($data['name']) . '</b> could not be saved. Please try again.')
                 ->with('message.type', 'danger');
         }
     }
@@ -107,7 +110,7 @@ class ActivitiesController extends Controller
 
         return redirect()
             ->route('activities.index')
-            ->with('message.success', 'The activity <b>' . e($activity->title) . '</b> was successfully updated.');
+            ->with('message.success', 'The activity <b>' . e($activity->name) . '</b> was successfully updated.');
     }
 
     public function confirmDelete(int $id)
@@ -130,21 +133,21 @@ class ActivitiesController extends Controller
             return redirect()
                 ->route('activities.confirmDelete', ['id' => $id])
                 ->withInput()
-                ->with('message.error', 'The activity <b>' . e($activity->title) . '</b> could not be deleted. Please try again later.')
+                ->with('message.error', 'The activity <b>' . e($activity->name) . '</b> could not be deleted. Please try again later.')
                 ->with('message.type', 'danger');
         }
 
         return redirect()
             ->route('activities.index')
-            ->with('message.success', 'The activity <b>' . e($activity->title) . '</b> was successfully deleted.');
+            ->with('message.success', 'The activity <b>' . e($activity->name) . '</b> was successfully deleted.');
     }
 
     protected function uploadImage(Request $request): string
     {
         $image = $request->file('image');
-        $title = $request->input('title');
+        $name = $request->input('name');
 
-        $imageName = date('YmdHis_') . \Str::slug($title) . "." . $image->guessExtension();
+        $imageName = date('YmdHis_') . \Str::slug($name) . "." . $image->guessExtension();
 
         $image->storeAs('imgs', $imageName);
 

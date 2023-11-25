@@ -16,7 +16,7 @@
         @csrf
         <div class="mb-3 d-flex align-items-start flex-column">
             <label for="name" class="form-label">Name:*</label>
-            <input type="text" id="name" name="name" class="form-control" value="{{ old('name') }}"
+            <input type="text" id="name" name="name" class="form-control"
                 @if ($errors->has('name')) aria-describedby="error-name" @endif>
             @if ($errors->has('name'))
                 <div class="text-danger p-2" id="error-name"><i class='bx bx-error'
@@ -27,7 +27,7 @@
         <div class="mb-3 d-flex align-items-start flex-column">
             <label for="description" class="form-label">Description:*</label>
             <textarea id="description" name="description" class="form-control"
-                @error('description') aria-describedby="error-description" @enderror>{{ old('description') }}</textarea>
+                @error('description') aria-describedby="error-description" @enderror></textarea>
             @error('description')
                 <div class="text-danger py-2" id="error-description">{{ $message }}</div>
             @enderror
@@ -44,7 +44,6 @@
             <label for="image_description" class="form-label">Image Description: <span
                     class="small">(optional)</span></label>
             <input type="text" id="image_description" name="image_description" class="form-control"
-                value="{{ old('image_description') }}"
                 @error('image_description') aria-describedby="error-image_description" @enderror>
             @error('image_description')
                 <div class="text-danger py-2" id="error-image_description">{{ $message }}</div>
@@ -57,8 +56,7 @@
                 @foreach ($categories as $category)
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                            <input type="checkbox" name="category_id[]" value="{{ $category->category_id }}"
-                                @checked(in_array($category->category_id, old('category_id', [])))>
+                            <input type="checkbox" name="category_id[]" value="{{ $category->category_id }}">
                             {{ $category->name }}
                         </label>
                     </div>
@@ -69,9 +67,9 @@
             <label for="budget" class="form-label">Budget: <span class="small">(optional)</span></label>
             <select id="budget" name="budget" class="form-control">
                 <option value="" disabled selected>Select Budget</option>
-                <option value="$" @if (old('budget') == '$') selected @endif>Low ($)</option>
-                <option value="$$" @if (old('budget') == '$$') selected @endif>Medium ($$)</option>
-                <option value="$$$" @if (old('budget') == '$$$') selected @endif>High ($$$)</option>
+                <option value="$">Low ($)</option>
+                <option value="$$">Medium ($$)</option>
+                <option value="$$$">High ($$$)</option>
             </select>
         </div>
         <button type="submit" class="button-35">Upload</button>
