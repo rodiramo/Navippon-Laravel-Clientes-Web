@@ -1,0 +1,10 @@
+Carrera: Diseño y Desarrollo Web.
+Materia: Portales y Comercio Electrónico. 
+Cuatrimestre: 4to. 
+Año: 2022.
+Turno: tarde. 
+Comisión: AH (DWTA4AH).
+Apellido y nombre: Diaz Ramos, Rocio. 
+Docente: Gallino, Santiago.
+Carácter de entrega: 1er parcial, segunda entrega.
+
