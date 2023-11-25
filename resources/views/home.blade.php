@@ -17,8 +17,8 @@
             Plant your trips, find new locations and get the trip of
             your dreams!</p>
         <div class="container-center">
-            <a href="{{ route('restaurants.index') }}">Restaurants</a>
-            <a href="{{ route('activities.index') }}">Activities</a>
+            <a class="button" href="{{ route('restaurants.index') }}">Restaurants</a>
+            <a class="button" href="{{ route('activities.index') }}">Activities</a>
         </div>
     </header>
 

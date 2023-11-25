@@ -23,67 +23,49 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-dark">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
-                    aria-controls="navbar" aria-expanded="false" aria-label="Abrir/cerrar menú de navegación">
+                <a href="/" class="navbar-brand">Navippon</a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse justify-content-center" id="navbar">
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav">
 
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/') }}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/about-us') }}">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/restaurants') }}">Restaurants</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/activities') }}">Activities</a>
-                        </li>
+                        <a class="nav-link" href="{{ url('/') }}">Home</a>
+
+                        <a class="nav-link" href="{{ url('/about-us') }}">About Us</a>
+
+                        <a class="nav-link" href="{{ url('/restaurants') }}">Restaurants</a>
+
+                        <a class="nav-link" href="{{ url('/activities') }}">Activities</a>
                         @auth
-
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    {{ auth()->user()->name }}
-                                </button>
-                                <ul class="dropdown-menu">
-
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                    {{ auth()->user()->name }}</a>
+                                <div class="dropdown-menu">
                                     @if (auth()->user()->role_id == 1)
-                                        {{-- Admin --}}
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
-                                        </li>
+                                        <a class="nav-link" href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
                                     @else
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('profile') }}">My Profile</a>
-                                        </li>
+                                        <a class="nav-link" href="{{ route('profile') }}">My Profile</a>
                                     @endif
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li>
-                                        <form action="{{ route('auth.logout') }}" method="post">
-                                            @csrf
-                                            <button type="submit" class="btn nav-link">{{ auth()->user()->email }} (Log
-                                                Out)</button>
-                                        </form>
-                                    </li>
-                                </ul>
+                                    <hr class="dropdown-divider">
+
+                                    <form action="{{ route('auth.logout') }}" method="post">
+                                        @csrf
+                                        <button type="submit" class="btn nav-link">{{ auth()->user()->email }}
+                                            (Log Out)
+                                        </button>
+                                    </form>
+                                @else
+                                    <a class="nav-link" href="{{ route('login') }}">Log In</a>
+
+                                    <a class="nav-link" href="{{ route('signup') }}">Sign Up</a>
+                                @endauth
                             </div>
-                        @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">Log In</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('signup') }}">Sign Up</a>
-                            </li>
-                        @endauth
-                    </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
