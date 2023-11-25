@@ -1,10 +1,20 @@
 Carrera: Diseño y Desarrollo Web.
-Materia: Portales y Comercio Electrónico. 
+Materia: Clientes Web Mobile. 
 Cuatrimestre: 4to. 
 Año: 2022.
 Turno: tarde. 
 Comisión: AH (DWTA4AH).
-Apellido y nombre: Diaz Ramos, Rocio. 
+Apellido y nombre: Diaz Ramos, Rocio y Guananjay Elian. 
 Docente: Gallino, Santiago.
-Carácter de entrega: 1er parcial, segunda entrega.
+Carácter de entrega: 2do parcial.
+
+Sobre Navippon (que será usado para proyecto final):
+
+
+Navippon es una aplicación Web para descubrir Japón, el usuario podrá:
+ -Navegar y descubrir Actividades y Restaurantes de Japón, filtrado por categorias, ciudades y presupuesto.
+ -Guardar las actividades a su perfil, esto le dejará poder agregarlas a su itinerario (en proceso).
+ -Armar su propio itinerario personalizado de viajes.
+ Tambien pretendemos que generar una comunidad de viajeros (blog) que dejen sugerencias, consejos,entre otras cosas;
+  para que compartan con otros viajeros apasionados.
 

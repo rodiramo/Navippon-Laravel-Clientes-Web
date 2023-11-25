@@ -3,7 +3,7 @@
 @section('title', 'User Favorites - ' . $user->name)
 
 @section('main')
-    <header>
+    <header class="header-restaurant">
         <h1>User Favorites - {{ $user->name }}</h1>
     </header>
 

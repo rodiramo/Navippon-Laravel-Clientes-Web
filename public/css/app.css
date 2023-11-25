@@ -634,6 +634,55 @@ input {
   padding: 1rem;
   width: 100%;
 }
+.table {
+  width: 100%;
+  background-color: var(--secondary-bg);
+  margin-bottom: 1rem;
+  color: #212529;
+  vertical-align: top;
+  border-color: #dee2e6;
+}
+/*Table */
+@media only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px) {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  thead tr {
+    position: absolute;
+  }
+
+  tr {
+    margin: 0 0 1rem 0;
+  }
+
+  td,
+  td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50% !important;
+  }
+
+  td:before {
+    position: absolute;
+    top: 0;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+  tr:nth-child(odd) {
+    background: rgb(150, 162, 215);
+  }
+}
+
 /* Media Queries */
 @media screen and (max-width: 1200px) {
   .card {

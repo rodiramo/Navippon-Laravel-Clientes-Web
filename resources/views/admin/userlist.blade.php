@@ -1,17 +1,16 @@
 @extends('layouts.main')
 
 @section('main')
-    <header>
+    <header class="header-restaurant">
         <h1>User List</h1>
     </header>
 
-    <table>
+    <table class="table container">
         <thead>
             <tr>
                 <th>Role ID</th>
                 <th>Name</th>
                 <th>Email</th>
-
             </tr>
         </thead>
         <tbody>
