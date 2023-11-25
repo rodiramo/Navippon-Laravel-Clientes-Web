@@ -26,6 +26,7 @@ use Illuminate\Database\Eloquent\Model;
 class Budget extends Model
 {
     //    use HasFactory;
+    protected $table = 'budget';
     protected $primaryKey = 'budget_id';
 
     public function restaurants()

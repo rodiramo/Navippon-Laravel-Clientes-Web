@@ -49,7 +49,7 @@ class Activity extends Model
     protected $primaryKey = 'activity_id';
 
     protected $fillable = [
-        'title',
+        'name',
         'budget_id',
         'direction',
         'image',
@@ -61,12 +61,17 @@ class Activity extends Model
     public static function validationRules(): array
     {
         return [
-            'title' => 'required',
+            'name' => 'required',
             'direction' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif',
-            'image_description' => 'required',
             'description' => 'required',
             'city_id' => 'required|exists:cities,city_id',
+        ];
+    }
+    public static function validationMessages(): array
+    {
+        return [
+            'name.required' => 'Please provide a name for this activity.',
+            'description.required' => 'Please provide a description for this game.',
         ];
     }
 
