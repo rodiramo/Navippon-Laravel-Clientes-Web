@@ -102,6 +102,7 @@
         </main>
         <footer class="footer">
             <p>Navippon &copy; 2023</p>
+
         </footer>
     </div>
     <script src="{{ url('js/bootstrap.bundle.js') }}"></script>

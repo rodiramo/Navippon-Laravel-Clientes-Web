@@ -87,7 +87,9 @@
             @yield('main')
         </main>
         <footer class="footer">
-            <p>Navippon &copy; 2023</p>
+
+            <p>Rocio Diaz Ramos y Elian Guananjay &copy; 2023</p>
+
         </footer>
     </div>
     <script src="{{ url('js/bootstrap.bundle.js') }}"></script>
